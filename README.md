@@ -1,4 +1,6 @@
-# Build A Node.js API Authentication With JWT
+# Build A Node.js API Authentication With JWT 
+
+@author Tuna
 
 A api authenticate to serve for the final course front end developer by Tony
 
