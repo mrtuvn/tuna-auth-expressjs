@@ -32,16 +32,16 @@ router.delete("/:id", UserController.deleteUser);
 router.post(
 	"/signup",
 	[
-		check("data.first_name", "First Name is required").not().isEmpty(),
-		check("data.last_name", "Last Name is required").not().isEmpty(),
-		check("data.email", "Please include a valid email").isEmail(),
-		check("data.address", "Address is required").not().isEmpty(),
-		check("data.city", "City is required").not().isEmpty(),
-		check("data.country", "Country is required").not().isEmpty(),
-		check("data.state", "State is required").not().isEmpty(),
-		check("data.role", "Role is required").not().isEmpty(),
+		check("first_name", "First Name is required").not().isEmpty(),
+		check("last_name", "Last Name is required").not().isEmpty(),
+		check("email", "Please include a valid email").isEmail(),
+		check("address", "Address is required").not().isEmpty(),
+		check("city", "City is required").not().isEmpty(),
+		check("country", "Country is required").not().isEmpty(),
+		check("state", "State is required").not().isEmpty(),
+		check("role", "Role is required").not().isEmpty(),
 		check(
-			"data.password",
+			"password",
 			"Password must be at least 6 characters"
 		).isLength({ min: 6 }),
 	],
@@ -54,8 +54,8 @@ router.post(
 router.post(
 	"/signin",
 	[
-		check("data.email", "Please include a valid email").isEmail(),
-		check("data.password", "Password is required").exists(),
+		check("email", "Please include a valid email").isEmail(),
+		check("password", "Password is required").exists(),
 	],
 	UserController.signin
 );

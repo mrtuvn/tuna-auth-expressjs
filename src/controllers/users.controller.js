@@ -10,6 +10,7 @@ const { generateAccessToken, generateRefreshToken } = require("../helpers");
 
 const userController = {
 	signup: async (req, res) => {
+		const body = req.body?.data || req.body || {};
 		const {
 			first_name,
 			last_name,
@@ -20,8 +21,8 @@ const userController = {
 			country,
 			state,
 			password,
-		} = req.body?.data || {};
-		console.log(req.body?.data);
+		} = body;
+		console.log(body);
 		//extract errors from request
 		const errors = validationResult(req);
 
@@ -85,20 +86,21 @@ const userController = {
 	 * @req
 	 * @res
 	 */
-	signin: async (req, res) => {
-		const { email, password } = req.body.data;
+		signin: async (req, res) => {
+			const body = req.body?.data || req.body || {};
+			const { email, password } = body;
 
-		//Validation errors
-		const errors = validationResult(req);
+			//Validation errors
+			const errors = validationResult(req);
 
-		//Check if are there any errors
-		if (!error.isEmpty()) {
-			return res.status(400).json({
-				msg: "Validation failed",
-				isSuccess: false,
-				errors: errors.array(),
-			});
-		}
+			//Check if are there any errors
+			if (!errors.isEmpty()) {
+				return res.status(400).json({
+					msg: "Validation failed",
+					isSuccess: false,
+					errors: errors.array(),
+				});
+			}
 
 		//Check email exists
 		const user = await UserService.findEmail(email);
@@ -173,7 +175,7 @@ const userController = {
 				isSuccess: true,
 			};
 
-			if ((total = 0)) return res.status(200).json(result);
+			if (total === 0) return res.status(200).json(result);
 
 			result.data = newUsers.slice(startOffset, endOffset);
 			res.status(200).json(result);

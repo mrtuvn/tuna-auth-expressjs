@@ -4,7 +4,7 @@ const generateAccessToken = (payload) => {
         payload,
         process.env.TOKEN_SECRET,
         {
-            expriresIn: 2700
+            expiresIn: 2700
         }
     )
     return result
@@ -15,7 +15,7 @@ const generateRefreshToken = (payload) => {
         payload,
         process.env.TOKEN_SECRET,
         {
-            expriresIn: 3600
+            expiresIn: 3600
         }
     )
     return result

@@ -17,33 +17,50 @@ const memberSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    position: {
+    phone: {
         type: String,
-        require: true
+    },
+    dob: {
+        type: String,
     },
     dateJoin: {
-        type: String,
-        require: true
+        type: String
     },
-    location: [
-        {
-            address: {
-                type: String,
-                require: true
-            },
-            district: {
-                type: String,
-                require: true
-            },
-            city: {
-                type: String,
-                require: true
-            },
-        }
-    ],
-    dob: {
+    address: {
+        type: String,
+    },
+    district: {
+        type: String,
+    },
+    city: {
+        type: String,
+    },
+    nationality: {
+        type: String,
+    },
+    gender: {
+        type: String,
+    },
+    country: {
+        type: String,
+    },
+    state: {
+        type: String,
+    },
+    bio: {
+        type: String,
+    },
+    role: {
+        type: String,
+    },
+    team: {
+        type: String,
+    },
+    position: {
+        type: String,
+    },
+    date: {
         type: Date,
-        require: false,
         default: Date.now
     },
 })

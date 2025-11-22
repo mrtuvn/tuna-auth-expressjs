@@ -5,7 +5,18 @@
 A api authenticate to serve for the final course front end developer by Tony
 
 - express js
-- mongo
+- mongodb
+- vercel deploy
+
+# DB
+For windows setup local mongodb 
+https://www.mongodb.com/try/download/community
+
+# ENV
+
+```env
+
+```
 
 ## Script
 
@@ -18,7 +29,7 @@ $ npm run dev
 ```
 
 ## API
-https://tony-auth-express-vdee.vercel.app/
+https://tuna-auth-express-vdee.vercel.app/
 
 Get fake avatar url:
 
@@ -71,10 +82,10 @@ Content-Type: application/json
 Body
 {
   "data": {
-    "first_name": "Tony",
+    "first_name": "Tu",
     "last_name": "Nguyen",
-    "email": "tony@gmail.com",
-    "address": "140 le van sy",
+    "email": "tun@gmail.com",
+    "address": "90 Mai Dong",
     "city": "HCM",
     "country": "VN",
     "state": "14",
@@ -116,19 +127,26 @@ POST  /api/member
 Headers: x-auth-token: {token}
 Body data:
 {
+  "data": {
     "avatar": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
     "firstName": "Donna",
     "lastName": "Hiti",
     "email": "donna@gmail.com",
-    "position": "Front End Engineer",
-    "dateJoin": "2014-08-20",
-    "location": [
-        {
-            "address": "140 Dang Van Ngu",
-            "district": "phunhuan",
-            "city": "hcm"
-        }
-    ]
+    "phone": "+84 123 456 789",
+    "dob": "12/12/1990",
+    "dateJoin": "2022-01-15", 
+    "address": "123 Nguyen Trai, District 1, Ho Chi Minh City",
+    "district": "Q 10",
+    "city": "HCM",
+    "nationality": "Viet Nam",
+    "gender": "Male",
+    "country": "Viet Nam",
+    "state": "HCM",
+    "bio": "Team Manager at ABC Company. Passionate about technology and software development.",
+    "role": "member",
+    "team": "IT",
+    "position": "Front End Engineer"
+  }
 }
 
 # Get List Members
@@ -148,19 +166,26 @@ PUT  /api/member/:id
 Headers: x-auth-token: {token}
 Body data:
 {
-  "avatar": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
-  "firstName": "Larry",
-  "lastName": "Steve",
-  "email": "Larry@gmail.com",
-  "position": "Web Developer",
-  "dateJoin": "2020-02-20",
-  "location": [
-    {
-      "address": "140 Dang Van Ngu",
-      "district": "phunhuan",
-      "city": "hcm"
-    },
-  ]
+  "data": {
+    "avatar": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
+    "firstName": "Donna",
+    "lastName": "Hiti",
+    "email": "donna@gmail.com",
+    "phone": "+84 123 456 789",
+    "dob": "12/12/1990",
+    "dateJoin": "2022-01-15", 
+    "address": "123 Nguyen Trai, District 1, Ho Chi Minh City",
+    "district": "Q 10",
+    "city": "HCM",
+    "nationality": "Viet Nam",
+    "gender": "Male",
+    "country": "Viet Nam",
+    "state": "HCM",
+    "bio": "Team Manager at ABC Company. Passionate about technology and software development.",
+    "role": "member",
+    "team": "IT",
+    "position": "Front End Engineer"
+  }
 }
 ```
 
@@ -172,10 +197,12 @@ POST  /api/photo
 Headers: x-auth-token: {token}
 Body data:
 {
-  "image": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
-  "title": "Sport 2",
-  "description": "Lizards are a widespread group of squamate reptiles",
-  "category": "sports"
+  "data": {
+    "image": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
+    "title": "Sport 2",
+    "description": "Lizards are a widespread group of squamate reptiles",
+    "category": "sports"
+  }
 }
 
 # Get List Photos
@@ -195,10 +222,12 @@ PUT  /api/photo/:id
 Headers: x-auth-token: {token}
 Body data:
 {
-  "image": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
-  "title": "Sport 4",
-  "description": "Lizards are a widespread group of squamate reptiles",
-  "category": "sports"
+  "data": {
+    "image": "https://cdn.fakercloud.com/avatars/ManikRathee_128.jpg",
+    "title": "Sport 4",
+    "description": "Lizards are a widespread group of squamate reptiles",
+    "category": "sports"
+  }
 }
 ```
 

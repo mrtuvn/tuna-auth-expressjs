@@ -9,12 +9,9 @@ const Member = require("../model/Member");
 router.post(
 	"/",
 	[
-		check("avatar", "Avatar is required").not().isEmpty(),
-		check("firstName", "FirstName is required").not().isEmpty(),
-		check("lastName", "LastName is required").not().isEmpty(),
-		check("position", "Position is required").not().isEmpty(),
-		check("dateJoin", "DateJoin is required").not().isEmpty(),
-		check("location", "Location is required").not().isEmpty(),
+		check("firstName", "First Name is required").not().isEmpty(),
+    	check("lastName", "Last Name is required").not().isEmpty(),
+    	check("email", "Email is required").not().isEmpty(),
 	],
 	async (req, res) => {
 		const errors = validationResult(req.body.data);
@@ -23,13 +20,24 @@ router.post(
 		}
 
 		const {
-			avatar,
-			firstName,
-			lastName,
-			email,
-			position,
-			dateJoin,
-			location,
+			avatar, 
+			firstName, 
+			lastName, 
+			email, 
+			phone,
+			dob,
+			dateJoin, 
+			address,
+			district,
+			city,
+			nationality,
+			gender,
+			country,
+			state,
+			bio,
+			role,
+			team,
+			position
 		} = req.body.data;
 		if (!location || location.length === 0) {
 			return res.status(400).json({
@@ -38,13 +46,24 @@ router.post(
 			});
 		}
 		const newNember = new Member({
-			avatar,
-			firstName,
-			lastName,
-			email,
-			position,
-			dateJoin,
-			location,
+			avatar, 
+			firstName, 
+			lastName, 
+			email, 
+			phone,
+			dob,
+			dateJoin, 
+			address,
+			district,
+			city,
+			nationality,
+			gender,
+			country,
+			state,
+			bio,
+			role,
+			team,
+			position
 		});
 
 		try {
@@ -115,23 +134,46 @@ router.get("/:id", async (req, res) => {
 // @desc     Update Member
 router.put("/:id", async (req, res) => {
 	const id = req.params.id;
-	const { avatar, firstName, lastName, email, position, dateJoin, location } =
-		req.body.data;
+	const { 
+		avatar, 
+		firstName, 
+		lastName, 
+		email, 
+		phone,
+		dob,
+		dateJoin, 
+		address,
+		district,
+		city,
+		nationality,
+		gender,
+		country,
+		state,
+		bio,
+		role,
+		team,
+		position
+	 } = req.body.data;
 
 	const fields = {};
 	if (avatar) fields.avatar = avatar;
 	if (firstName) fields.firstName = firstName;
 	if (lastName) fields.lastName = lastName;
 	if (email) fields.email = email;
-	if (position) fields.position = position;
+	if (phone) fields.phone = phone;
+  	if (dob) fields.dob = dob;
 	if (dateJoin) fields.dateJoin = dateJoin;
-	if (!location || location.length === 0) {
-		return res.status(400).json({
-			msg: "Please fill full input",
-			isSucess: false,
-		});
-	}
-	fields.location = location;
+	if (address) fields.address = address;
+	if (district) fields.district = district;
+	if (city) fields.city = city;
+	if (nationality) fields.nationality = nationality;
+	if (gender) fields.gender = gender;
+	if (country) fields.country = country;
+	if (state) fields.state = state;
+	if (bio) fields.bio = bio;
+	if (role) fields.role = role;
+	if (team) fields.team = team;
+	if (position) fields.position = position;
 
 	try {
 		const member = await Member.findOneAndUpdate(
@@ -150,6 +192,7 @@ router.put("/:id", async (req, res) => {
 			isSucess: true,
 		});
 	} catch (err) {
+		console.log('error: ', err);
 		res.status(500).json({
 			msg: `Server Error`,
 			isSucess: false,

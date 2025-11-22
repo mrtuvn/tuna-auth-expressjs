@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        require: true
+        required: true
     },
     address: {
         type: String,
@@ -29,13 +29,13 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        min: 6
+        minlength: 6
     },
     created_by: {
         type: Date,
         default: Date.now
     },
-    upadted_by: {
+    updated_by: {
         type: Date,
         default: Date.now
     }
