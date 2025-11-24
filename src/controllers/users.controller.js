@@ -10,7 +10,7 @@ const { generateAccessToken, generateRefreshToken } = require("../helpers");
 
 const userController = {
 	signup: async (req, res) => {
-		const body = req.body?.data || req.body || {};
+		const data = req.body?.data || req.body || {};
 		const {
 			first_name,
 			last_name,
@@ -21,10 +21,10 @@ const userController = {
 			country,
 			state,
 			password,
-		} = body;
-		console.log(body);
+		} = data;
+
 		//extract errors from request
-		const errors = validationResult(req);
+		const errors = validationResult(req.body.data);
 
 		//Check are there any errors
 		if (!errors.isEmpty()) {
@@ -91,7 +91,7 @@ const userController = {
 			const { email, password } = body;
 
 			//Validation errors
-			const errors = validationResult(req);
+			const errors = validationResult(req.body.data);
 
 			//Check if are there any errors
 			if (!errors.isEmpty()) {

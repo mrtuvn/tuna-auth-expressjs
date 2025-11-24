@@ -39,12 +39,7 @@ router.post(
 			team,
 			position
 		} = req.body.data;
-		if (!location || location.length === 0) {
-			return res.status(400).json({
-				msg: "Please fill full input",
-				isSucess: false,
-			});
-		}
+		
 		const newNember = new Member({
 			avatar, 
 			firstName, 

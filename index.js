@@ -27,10 +27,10 @@ mongoose
 
 //use route
 app.use("/api/auth", authRoute);
-app.use("/api/users", usersRoute);
-app.use("/api/members", membersRoute);
-app.use("/api/photos", photosRoute);
-app.use("/api/todos", todosRoute);
+app.use("/api/user", usersRoute);
+app.use("/api/member", membersRoute);
+app.use("/api/photo", photosRoute);
+app.use("/api/todo", todosRoute);
 
 app.listen(PORT, () => {
 	console.log(`server is up and running at ${PORT}`);
